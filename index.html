@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sara Imtiyaz - Portfolio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'matte-black': '#121212',
+                        'off-white': '#F5F5F5',
+                        'deep-bronze': '#A8774B',
+                        'metallic-gold': '#C6A77C',
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Bronze-Gold Gradient for text */
+        .bronze-gold-text {
+            background: linear-gradient(
+                145deg,
+                #a8774b 0%,
+                #b48c61 25%,
+                #c6a77c 50%,
+                #b48c61 75%,
+                #a8774b 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+
+
+        /* Navbar Glass Effect */
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass-effect {
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(168, 119, 75, 0.4);
+        }
+
+        /* Project Card Glass Effect */
+        .glass-project {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background-color: rgba(198, 167, 124, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .glass-project {
+            background-color: rgba(198, 167, 124, 0.1);
+            border: 1px solid rgba(168, 119, 75, 0.4);
+        }
+        
+        /* Profile Image Ring */
+        .profile-pic-ring {
+            box-shadow: 0 0 20px 10px rgba(198, 167, 124, 0.5);
+            transition: box-shadow 0.5s ease;
+            border: 1px solid rgba(168, 119, 75, 0.4);
+        }
+        .dark .profile-pic-ring {
+            box-shadow: 0 0 20px 8px #C6A77C;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="bg-off-white dark:bg-matte-black transition-colors duration-500 min-h-screen font-sans">
+
+    <button id="theme-toggle" 
+        class="fixed top-5 right-6 z-50 w-12 h-12 flex items-center justify-center 
+               rounded-full glass-effect transition-all duration-300 transform hover:scale-110">
+        <i id="theme-icon" class="fa-solid fa-sun text-metallic-gold dark:text-metallic-gold text-xl transition-colors duration-500"></i>
+    </button>
+
+    <nav class="fixed w-[90%] md:w-3/4 max-w-4xl left-1/2 -translate-x-1/2 top-4 z-40 p-3 rounded-full shadow-xl glass-effect transition-all duration-500">
+        <div class="flex justify-between items-center px-4">
+            <span class="text-xl font-bold bronze-gold-text">SARA</span>
+            
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="text-matte-black dark:text-off-white hover:text-deep-bronze dark:hover:text-metallic-gold transition-all duration-300 transform hover:scale-105">Home</a>
+                <a href="#about" class="text-matte-black dark:text-off-white hover:text-deep-bronze dark:hover:text-metallic-gold transition-all duration-300 transform hover:scale-105">About</a>
+                <a href="#projects" class="text-matte-black dark:text-off-white hover:text-deep-bronze dark:hover:text-metallic-gold transition-all duration-300 transform hover:scale-105">Projects</a>
+                <a href="#experience" class="text-matte-black dark:text-off-white hover:text-deep-bronze dark:hover:text-metallic-gold transition-all duration-300 transform hover:scale-105">Experience</a>
+                <a href="#gallery" class="text-matte-black dark:text-off-white hover:text-deep-bronze dark:hover:text-metallic-gold transition-all duration-300 transform hover:scale-105">Gallery</a>
+                <a href="#contact" class="text-matte-black dark:text-off-white hover:text-deep-bronze dark:hover:text-metallic-gold transition-all duration-300 transform hover:scale-105">Contact</a>
+            </div>
+            
+            <button id="mobile-menu-toggle" class="md:hidden text-matte-black dark:text-off-white text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 pt-4 border-t border-deep-bronze dark:border-metallic-gold">
+            <div class="flex flex-col space-y-3 px-4">
+                <a href="#home" class="text-matte-black dark:text-off-white hover:text-deep-bronze dark:hover:text-metallic-gold transition-all duration-300">Home</a>
+                <a href="#about" class="text-matte-black dark:text-off-white hover:text-deep-bronze dark:hover:text-metallic-gold transition-all duration-300">About</a>
+                <a href="#projects" class="text-matte-black dark:text-off-white hover:text-deep-bronze dark:hover:text-metallic-gold transition-all duration-300">Projects</a>
+                <a href="#experience" class="text-matte-black dark:text-off-white hover:text-deep-bronze dark:hover:text-metallic-gold transition-all duration-300">Experience</a>
+                <a href="#gallery" class="text-matte-black dark:text-off-white hover:text-deep-bronze dark:hover:text-metallic-gold transition-all duration-300">Gallery</a>
+                <a href="#contact" class="text-matte-black dark:text-off-white hover:text-deep-bronze dark:hover:text-metallic-gold transition-all duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="pt-32 container mx-auto px-4 md:px-8">
+        
+        <!-- HOME SECTION -->
+        <section id="home" class="min-h-[70vh] flex flex-col md:flex-row items-center justify-center text-left md:text-center gap-16 px-4  transition-colors duration-500">
+            <div class="md:w-1/2">
+                <h1 class="text-7xl md:text-8xl font-light bronze-gold-text mb-6" style="font-family: 'Cormorant Garamond', serif;">
+                    Sara Imtiyaz
+                </h1>
+                <p class="text-2xl md:text-4xl font-light mb-8 transition-colors duration-500 text-deep-bronze dark:text-off-white">
+                    Lead Web Developer & Designer
+                </p>
+                <a href="#" class="inline-block py-2 px-6 rounded-full text-lg font-semibold transition-all duration-300 transform
+                    bg-transparent border-2 border-metallic-gold text-metallic-gold
+                    hover:scale-105 hover:bg-metallic-gold hover:text-matte-black
+                    dark:bg-transparent dark:border-metallic-gold dark:text-metallic-gold
+                    dark:hover:bg-metallic-gold dark:hover:text-matte-black">
+                   Resume
+                </a>
+            </div>
+
+            <div class="flex justify-center md:justify-start">
+  <div class="relative w-48 h-48 md:w-96 md:h-96">
+    
+    <img src="images/profile1.png" 
+         alt="Profile Picture" 
+         class="w-full h-full object-cover rounded-full p-1 transition-all duration-500 profile-pic-ring relative z-0">
+         
+    <div class="absolute inset-0 z-10 rounded-full pointer-events-none shadow-[inset_0_0_60px_30px_rgba(0,0,0,1)]"></div>
+    
+  </div>
+</div>
+        </section>
+
+
+
+
+      
+<!-- About Section -->
+<section id="about" class="py-20 bg-off-white dark:bg-matte-black transition-colors duration-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+    <!-- Left Column: Profile Picture -->
+   <div class="flex justify-center md:justify-start">
+  <div class="relative w-48 h-48 md:w-96 md:h-96">
+    
+    <img src="images/profile2.png" 
+         alt="Profile Picture" 
+         class="w-full h-full object-cover rounded-full p-1 transition-all duration-500 profile-pic-ring relative z-0">
+         
+    <div class="absolute inset-0 z-10 rounded-full pointer-events-none shadow-[inset_0_0_60px_30px_rgba(0,0,0,1)]"></div>
+    
+  </div>
+</div>
+
+    <!-- Right Column: About Text -->
+    <div class="space-y-6">
+      <h2 class="text-4xl font-bold text-deep-bronze dark:bronze-gold-text">About me</h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-bronze-gold-text to-bronze-gold-text/50 mb-6"></div>
+
+      <p class="text-gray-800 dark:text-off-white leading-relaxed">
+I’m Sara, a budding UI/UX Designer who’s still learning the craft but genuinely obsessed with good design and smooth user experiences.
+Before this, I worked in marketing and technical support, which helped me understand real users, their pain points, and what truly frustrates them.
+That’s exactly what pulled me toward UI/UX.</p>
+      <p class="text-gray-800 dark:text-off-white leading-relaxed">
+Now I’m building my skills in wireframing, flows, and clean visual design — one project at a time.
+I may be a fresher, but I’m curious, quick to learn, and fully committed to creating designs that feel simple, modern, and actually helpful.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+      <!-- SKILLS & TECHNOLOGIES SECTION -->
+<section id="skills" class="py-16 bg-off-white dark:bg-matte-black transition-colors duration-500">
+    <h2 class="text-4xl font-bold mb-12 text-center text-deep-bronze dark:bronze-gold-text">
+        Skills & Technologies
+    </h2>
+
+    <!-- One-line skill icons -->
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-center gap-10 items-center text-center">
+
+        <!-- Figma -->
+        <div class="flex flex-col items-center space-y-2">
+            <i class="fab fa-figma text-4xl bronze-gold-text"></i>
+            <p class="text-sm font-medium text-matte-black dark:text-off-white">Figma</p>
+        </div>
+
+        <!-- Illustrator -->
+         <div class="flex flex-col items-center space-y-2">
+                    <i class="fas fa-pen-nib text-4xl bronze-gold-text"></i>
+                    <p class="text-sm font-medium text-matte-black dark:text-off-white">Illustrator</p>
+                </div>
+
+        <!-- Photoshop -->
+        <div class="flex flex-col items-center space-y-2">
+            <i class="fas fa-image text-4xl bronze-gold-text"></i>
+            <p class="text-sm font-medium text-matte-black dark:text-off-white">Photoshop</p>
+        </div>
+
+        <!-- Canva -->
+        <div class="flex flex-col items-center space-y-2">
+            <i class="fas fa-paint-brush text-4xl bronze-gold-text"></i>
+            <p class="text-sm font-medium text-matte-black dark:text-off-white">Canva</p>
+        </div>
+
+        <!-- Java -->
+        <div class="flex flex-col items-center space-y-2">
+            <i class="fab fa-java text-4xl bronze-gold-text"></i>
+            <p class="text-sm font-medium text-matte-black dark:text-off-white">Java</p>
+        </div>
+
+        <!-- Python -->
+        <div class="flex flex-col items-center space-y-2">
+            <i class="fab fa-python text-4xl bronze-gold-text"></i>
+            <p class="text-sm font-medium text-matte-black dark:text-off-white">Python</p>
+        </div>
+
+        <!-- HTML -->
+        <div class="flex flex-col items-center space-y-2">
+            <i class="fab fa-html5 text-4xl bronze-gold-text"></i>
+            <p class="text-sm font-medium text-matte-black dark:text-off-white">HTML</p>
+        </div>
+
+        <!-- CSS -->
+        <div class="flex flex-col items-center space-y-2">
+            <i class="fab fa-css3-alt text-4xl bronze-gold-text"></i>
+            <p class="text-sm font-medium text-matte-black dark:text-off-white">CSS</p>
+        </div>
+
+        <!-- JS -->
+        <div class="flex flex-col items-center space-y-2">
+            <i class="fab fa-js text-4xl bronze-gold-text"></i>
+            <p class="text-sm font-medium text-matte-black dark:text-off-white">JavaScript</p>
+        </div>
+
+        <!-- SQL -->
+        <div class="flex flex-col items-center space-y-2">
+            <i class="fas fa-database text-4xl bronze-gold-text"></i>
+            <p class="text-sm font-medium text-matte-black dark:text-off-white">SQL</p>
+        </div>
+
+    </div>
+</section>
+
+
+        
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="py-16">
+            <h2 class="text-4xl font-bold mb-12 text-center text-deep-bronze dark:bronze-gold-text">
+                Featured Projects
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 rounded-xl glass-project transition-all duration-500 transform hover:scale-[1.02] shadow-xl">
+                   <div class="w-full h-48 rounded-lg mb-4 overflow-hidden relative">
+                        <img src="images/La Cafe.png" 
+                            class="w-full h-full object-cover" 
+                            alt="Sara Image">
+                    </div>
+
+                    <h3 class="text-2xl font-semibold mb-3 bronze-gold-text">La Café — Modern Café Website</h3>
+                    <p class="text-matte-black dark:text-off-white mb-4">A warm, aesthetic café landing page designed to highlight ambience, menu, and brand identity.</p>
+                    <a href="https://www.behance.net/gallery/239556201/La-Caf-Luxury-Coffee-Shop-Website-UI-Design" class="text-deep-bronze dark:text-metallic-gold hover:underline transition-colors duration-300">View Details &rarr;</a>
+                </div>
+                <div class="p-6 rounded-xl glass-project transition-all duration-500 transform hover:scale-[1.02] shadow-xl">
+                   <div class="w-full h-48 rounded-lg mb-4 overflow-hidden relative">
+                        <img src="images/interior.png" 
+                            class="w-full h-full object-cover" 
+                            alt="Sara Image">
+                    </div>
+
+                    <h3 class="text-2xl font-semibold mb-3 bronze-gold-text">Interior Design Landing Page</h3>
+                    <p class="text-matte-black dark:text-off-white mb-4">A modern, luxurious landing page for an interior design studio.</p>
+                    <a href="#" class="text-deep-bronze dark:text-metallic-gold hover:underline transition-colors duration-300">View Details &rarr;</a>
+                </div>
+                <div class="p-6 rounded-xl glass-project transition-all duration-500 transform hover:scale-[1.02] shadow-xl">
+                    <div class="w-full h-48 rounded-lg mb-4 overflow-hidden relative">
+                        <img src="images/La Cafe.png" 
+                            class="w-full h-full object-cover" 
+                            alt="Sara Image">
+                    </div>
+
+                    <h3 class="text-2xl font-semibold mb-3 bronze-gold-text">Lume Studio – Makeup Salon</h3>
+                    <p class="text-matte-black dark:text-off-white mb-4">Full stack application with Node.js, MongoDB, and payment gateway integration.</p>
+                    <a href="#" class="text-deep-bronze dark:text-metallic-gold hover:underline transition-colors duration-300">View Details &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience" class="py-16">
+<h2 class="text-4xl font-bold mb-12 text-center text-deep-bronze dark:bronze-gold-text">
+                Experience
+            </h2>            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="p-6 rounded-xl glass-project shadow-xl transition-all duration-300 hover:scale-[1.01]">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-semibold bronze-gold-text">Intern – Marketing & Technical Support</h3>
+                            <p class="text-lg text-deep-bronze dark:text-metallic-gold">Driefcase Health Tech Pvt. Ltd.</p>
+                        </div>
+                        <span class="text-sm text-matte-black dark:text-off-white mt-2 md:mt-0">Nov 2022 – Mar 2025</span>
+                    </div>
+                    <ul class="space-y-2 text-matte-black dark:text-off-white">
+                        <li class="flex items-start"><span class="bronze-gold-text mr-2">•</span> Worked with the Marketing team to coordinate awareness and adoption of the company’s Health-Tech application</li>
+                        <li class="flex items-start"><span class="bronze-gold-text mr-2">•</span> Collected and documented user feedback, sharing insights with the product and development teams for improvements</li>
+                        <li class="flex items-start"><span class="bronze-gold-text mr-2">•</span> Worked during HMIS deployment in 50+ hospitals</li>
+                    </ul>
+                </div>
+
+                <div class="p-6 rounded-xl glass-project shadow-xl transition-all duration-300 hover:scale-[1.01]">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-semibold bronze-gold-text">Customer Support Associate</h3>
+                            <p class="text-lg text-deep-bronze dark:text-metallic-gold">Transact Global</p>
+                        </div>
+                        <span class="text-sm text-matte-black dark:text-off-white mt-2 md:mt-0">Sep 2025 – Oct 2025</span>
+                    </div>
+                    <ul class="space-y-2 text-matte-black dark:text-off-white">
+                        <li class="flex items-start"><span class="bronze-gold-text mr-2">•</span> Handled customer queries through chat & email with clear, quick communication</li>
+                        <li class="flex items-start"><span class="bronze-gold-text mr-2">•</span> Resolved issues efficiently while maintaining a positive support experience</li>
+                        <li class="flex items-start"><span class="bronze-gold-text mr-2">•</span> Managed high-volume messages and maintained accuracy under pressure</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- EDUCATION SECTION -->
+        <section id="education" class="py-16">
+<h2 class="text-4xl font-bold mb-12 text-center text-deep-bronze dark:bronze-gold-text">
+                Education
+            </h2>            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="p-6 rounded-xl glass-project shadow-xl transition-all duration-300 hover:scale-[1.01]">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+                        <div>
+                            <h3 class="text-2xl font-semibold bronze-gold-text">B.Tech in Computer Science</h3>
+                            <p class="text-lg text-deep-bronze dark:text-metallic-gold">HMFA Memorial Institute of Engineering & Technology</p>
+                        </div>
+                        <span class="text-sm text-matte-black dark:text-off-white mt-2 md:mt-0">2017-2021</span>
+                    </div>
+                    <p class="text-matte-black dark:text-off-white">Specialized in Computer Science & Engineering</p>
+                         <p class="text-matte-black dark:text-off-white"> GPA: 7.49/10.0</p>
+                </div>
+            </div>
+        </section>
+
+
+      <!-- GALLERY SECTION -->
+<section id="gallery" class="py-16 bg-off-white dark:bg-matte-black">
+    <h2 class="text-4xl font-bold mb-12 text-center text-deep-bronze dark:bronze-gold-text">
+        Gallery
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 md:px-12">
+        <!-- CARD -->
+        <div class="relative h-48 rounded-xl overflow-hidden shadow-lg group hover:scale-[1.03] transition-transform duration-300">
+            <img src="images/flower.png" alt="Project 1" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                <p class="text-white font-medium text-sm">Flower Shop</p>
+            </div>
+        </div>
+
+        <div class="relative h-48 rounded-xl overflow-hidden shadow-lg group hover:scale-[1.03] transition-transform duration-300">
+            <img src="images/Login.png" alt="Project 2" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                <p class="text-white font-medium text-sm">Login Page</p>
+            </div>
+        </div>
+
+        <div class="relative h-48 rounded-xl overflow-hidden shadow-lg group hover:scale-[1.03] transition-transform duration-300">
+            <img src="images/interior.png" alt="interior" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                <p class="text-white font-medium text-sm">Interior Design</p>
+            </div>
+        </div>
+
+        <div class="relative h-48 rounded-xl overflow-hidden shadow-lg group hover:scale-[1.03] transition-transform duration-300">
+            <img src="images/La Cafe.png" alt="La-Caf-Luxury-Coffee-Shop-Website-UI-Design" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                <p class="text-white font-medium text-sm">La Cafe</p>
+            </div>
+        </div>
+
+        <!-- Add more cards similarly -->
+    </div>
+</section>
+
+
+       <!-- CONTACT SECTION -->
+<section id="contact" class="py-16 bg-off-white dark:bg-matte-black transition-colors duration-500">
+    <h2 class="text-4xl font-bold mb-12 text-center text-deep-bronze dark:bronze-gold-text">
+        Get in Touch
+    </h2>
+    <div class="max-w-2xl mx-auto">
+        <div class="p-8 rounded-2xl glass-project shadow-xl">
+            <p class="text-center text-lg text-matte-black dark:text-off-white mb-8">
+                Have a project in mind or just want to chat? Feel free to reach out!
+            </p>
+            
+            <!-- Formspree Form -->
+            <form class="space-y-6" action="https://formspree.io/f/mpwvyygy" method="POST">
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-matte-black dark:text-off-white">Name</label>
+                    <input type="text" name="name"
+                           class="w-full px-4 py-3 rounded-lg bg-white/50 dark:bg-black/50 border border-deep-bronze dark:border-metallic-gold 
+                                  text-matte-black dark:text-off-white focus:outline-none focus:ring-2 focus:ring-metallic-gold transition-all duration-300"
+                           placeholder="Your Name" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-matte-black dark:text-off-white">Email</label>
+                    <input type="email" name="email"
+                           class="w-full px-4 py-3 rounded-lg bg-white/50 dark:bg-black/50 border border-deep-bronze dark:border-metallic-gold 
+                                  text-matte-black dark:text-off-white focus:outline-none focus:ring-2 focus:ring-metallic-gold transition-all duration-300"
+                           placeholder="your.email@example.com" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-matte-black dark:text-off-white">Message</label>
+                    <textarea name="message" rows="5"
+                              class="w-full px-4 py-3 rounded-lg bg-white/50 dark:bg-black/50 border border-deep-bronze dark:border-metallic-gold 
+                                     text-matte-black dark:text-off-white focus:outline-none focus:ring-2 focus:ring-metallic-gold transition-all duration-300"
+                              placeholder="Your message..." required></textarea>
+                </div>
+                
+                <button type="submit" 
+                        class="w-full py-3 px-6 rounded-full text-lg font-semibold transition-all duration-300 transform
+                               bg-transparent border-2 border-metallic-gold text-metallic-gold
+                               hover:scale-105 hover:bg-metallic-gold hover:text-matte-black
+                               dark:bg-transparent dark:border-metallic-gold dark:text-metallic-gold
+                               dark:hover:bg-metallic-gold dark:hover:text-matte-black">
+                    Send Message
+                </button>
+            </form>
+            
+            <div class="mt-8 pt-8 border-t border-deep-bronze dark:border-metallic-gold">
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6 text-matte-black dark:text-off-white">
+                    <a href="mailto:sara@example.com" class="flex items-center gap-2 hover:text-metallic-gold transition-colors duration-300">
+                        <i class="fas fa-envelope bronze-gold-text"></i>
+                        <span>saraimtiyaz23@gmail.com</span>
+                    </a>
+                    <a href="tel:+1234567890" class="flex items-center gap-2 hover:text-metallic-gold transition-colors duration-300">
+                        <i class="fas fa-phone bronze-gold-text"></i>
+                        <span>+91 9935090685</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        
+    </main>
+    
+    <!-- Social Media Links -->
+    <div class="fixed bottom-6 right-6 z-30 flex flex-col space-y-4">
+        <a href="https://linkedin.com" target="_blank" class="w-10 h-10 rounded-full border-2 border-deep-bronze dark:border-metallic-gold flex items-center justify-center 
+             text-matte-black dark:text-off-white bg-off-white dark:bg-matte-black transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:border-metallic-gold">
+            <i class="fab fa-linkedin-in text-xl bronze-gold-text"></i>
+        </a>
+        <a href="https://github.com" target="_blank" class="w-10 h-10 rounded-full border-2 border-deep-bronze dark:border-metallic-gold flex items-center justify-center 
+             text-matte-black dark:text-off-white bg-off-white dark:bg-matte-black transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:border-metallic-gold">
+            <i class="fab fa-github text-xl bronze-gold-text"></i>
+        </a>
+        <a href="https://email.com" target="_blank" class="w-10 h-10 rounded-full border-2 border-deep-bronze dark:border-metallic-gold flex items-center justify-center 
+             text-matte-black dark:text-off-white bg-off-white dark:bg-matte-black transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:border-metallic-gold">
+            <i class="fas fa-envelope text-xl bronze-gold-text"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-20 py-6 text-center border-t border-deep-bronze dark:border-metallic-gold bg-off-white dark:bg-matte-black transition-colors duration-500">
+        <p class="text-sm text-matte-black dark:text-metallic-gold transition-colors duration-500">
+            &copy; 2025 Sara Imtiyaz. All Rights Reserved.
+        </p>
+    </footer>
+
+    <script>
+        const htmlElement = document.documentElement;
+        const toggleButton = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Theme Toggle Function
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                htmlElement.classList.add('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.theme = 'dark';
+            } else {
+                htmlElement.classList.remove('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.theme = 'light';
+            }
+        }
+
+        // Check local storage or system preference on load
+        const storedTheme = localStorage.theme;
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+
+        // Toggle handler
+        toggleButton.addEventListener('click', () => {
+            const newTheme = htmlElement.classList.contains('dark') ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+
+        // Mobile Menu Toggle
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
